@@ -1,0 +1,9 @@
+---
+- hosts: '{{ hosts }}'
+  vars:
+    opdk_region: dc-1
+  roles:
+  - { role: apigee-opdk-start-components, component_name: 'apigee-cassandra' }
+  - apigee-opdk-cassandra-rebuild
+  tags:
+  - c-rebuild

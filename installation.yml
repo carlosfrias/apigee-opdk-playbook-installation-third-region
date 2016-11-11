@@ -1,0 +1,256 @@
+---
+- include: configuration/update_cache.yml
+  tags:
+  - cache
+  - os-pre-req
+  - apigee-pre-req
+  - ms
+  - ds
+  - qpid
+  - pgmaster
+  - pgstandby
+
+- include: configuration/load-opdk-credentials.yml
+  vars:
+    hosts: 'planet'
+  tags:
+  - credentials
+  - os-pre-req
+  - apigee-pre-req
+
+- include: configuration/opdk-setup-os.yml
+  vars:
+    hosts: 'planet'
+  tags:
+  - os
+  - os-pre-req
+
+- include: configuration/update-user.yml
+  vars:
+    hosts: 'planet'
+    user: 'root'
+  tags:
+  - root-user
+
+- include: components/opdk-pre-requisites.yml
+  vars:
+    hosts: 'planet'
+    jdk_version: '1.8'
+    opdk_ldap_type: '2'
+  tags:
+  - apigee-pre-req
+
+- include: components/opdk-install-component.yml
+  vars:
+    hosts: 'dc-3-ds'
+    component_profile: 'ds'
+    jdk_version: '1.8'
+  tags:
+  - ds
+
+- include: components/opdk-install-component.yml
+  vars:
+    hosts: 'dc-2-ds'
+    component_profile: 'ds'
+    jdk_version: '1.8'
+  tags:
+  - ds
+
+- include: components/opdk-install-component.yml
+  vars:
+    hosts: 'dc-1-ds'
+    component_profile: 'ds'
+    jdk_version: '1.8'
+    opdk_ldap_type: '2'
+  tags:
+  - ds
+
+- include: components/opdk-cassandra-rebuild.yml
+  vars:
+    hosts: 'dc-3-ds'
+    jdk_version: '1.8'
+  tags:
+  - ms
+
+- include: components/opdk-cassandra-rebuild.yml
+  vars:
+    hosts: 'dc-2-ds'
+    jdk_version: '1.8'
+  tags:
+  - ms
+
+- include: configuration/opdk-set-reachable.yml
+  vars:
+    hosts: 'dc-3-rmp'
+    reachability: 'false'
+  tags:
+  - rmp
+
+- include: components/opdk-install-component.yml
+  vars:
+    hosts: 'dc-3-rmp'
+    component_profile: 'rmp'
+    jdk_version: '1.8'
+  tags:
+  - rmp
+
+- include: configuration/opdk-set-reachable.yml
+  vars:
+    hosts: 'dc-3-rmp'
+    reachability: 'true'
+  tags:
+  - rmp
+
+- include: configuration/opdk-set-reachable.yml
+  vars:
+    hosts: 'dc-2-rmp'
+    reachability: 'false'
+  tags:
+  - rmp
+
+- include: components/opdk-install-component.yml
+  vars:
+    hosts: 'dc-2-rmp'
+    component_profile: 'rmp'
+    jdk_version: '1.8'
+  tags:
+  - rmp
+
+- include: configuration/opdk-set-reachable.yml
+  vars:
+    hosts: 'dc-2-rmp'
+    reachability: 'true'
+  tags:
+  - rmp
+
+- include: configuration/opdk-set-reachable.yml
+  vars:
+    hosts: 'dc-1-rmp'
+    reachability: 'false'
+  tags:
+  - rmp
+
+- include: components/opdk-install-component.yml
+  vars:
+    hosts: 'dc-1-rmp'
+    component_profile: 'rmp'
+    jdk_version: '1.8'
+  tags:
+  - rmp
+
+- include: configuration/opdk-set-reachable.yml
+  vars:
+    hosts: 'dc-1-rmp'
+    reachability: 'true'
+  tags:
+  - rmp
+
+- include: components/opdk-install-component.yml
+  vars:
+    hosts: 'dc-3-qpid'
+    component_profile: 'qs'
+    jdk_version: '1.8'
+  tags:
+  - qpid
+  - qpid-installer
+
+- include: components/opdk-setup-qpid-add.yml
+  vars:
+    hosts: 'dc-3-qpid'
+  tags:
+  - qpid
+  - qpid-add
+
+- include: components/opdk-install-component.yml
+  vars:
+    hosts: 'dc-2-qpid'
+    component_profile: 'qs'
+    jdk_version: '1.8'
+  tags:
+  - qpid
+
+- include: components/opdk-setup-qpid-add.yml
+  vars:
+    hosts: 'dc-2-qpid'
+  tags:
+  - qpid
+  - qpid-add
+
+- include: validations/opdk-setup-validate.yml
+  vars:
+    hosts: 'dc-3-rmp'
+  tags:
+  - validation
+
+- include: validations/opdk-internal-port-connectivity-validator.yml
+  tags:
+  - port-validator
+
+- include: validations/opdk-setup-status.yml
+  vars:
+    hosts: 'planet'
+  tags:
+  - status
+
+- include: validations/opdk-setup-log-files.yml
+  vars:
+    hosts: dc-1-ds
+  tags:
+  - logs
+  - dc-1
+
+- include: validations/opdk-setup-log-files.yml
+  vars:
+    hosts: dc-2-ds
+  tags:
+  - logs
+  - dc-2
+
+- include: validations/opdk-setup-log-files.yml
+  vars:
+    hosts: dc-3-ds
+  tags:
+  - logs
+  - dc-2
+
+- include: validations/opdk-setup-log-files.yml
+  vars:
+    hosts: dc-1-rmp
+  tags:
+  - logs
+  - dc-1
+
+- include: validations/opdk-setup-log-files.yml
+  vars:
+    hosts: dc-2-rmp
+  tags:
+  - logs
+  - dc-2
+
+- include: validations/opdk-setup-log-files.yml
+  vars:
+    hosts: dc-3-rmp
+  tags:
+  - logs
+  - dc-2
+
+- include: validations/opdk-setup-log-files.yml
+  vars:
+    hosts: dc-1-qpid
+  tags:
+  - logs
+  - dc-1
+
+- include: validations/opdk-setup-log-files.yml
+  vars:
+    hosts: dc-2-qpid
+  tags:
+  - logs
+  - dc-2
+
+- include: validations/opdk-setup-log-files.yml
+  vars:
+    hosts: dc-3-qpid
+  tags:
+  - logs
+  - dc-2
