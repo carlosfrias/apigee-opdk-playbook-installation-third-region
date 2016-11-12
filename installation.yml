@@ -47,6 +47,7 @@
     jdk_version: '1.8'
   tags:
   - ds
+  - ds-3
 
 - include: components/opdk-install-component.yml
   vars:
@@ -55,6 +56,7 @@
     jdk_version: '1.8'
   tags:
   - ds
+  - ds-2
 
 - include: components/opdk-install-component.yml
   vars:
@@ -64,6 +66,7 @@
     opdk_ldap_type: '2'
   tags:
   - ds
+  - ds-1
 
 - include: components/opdk-cassandra-rebuild.yml
   vars:
@@ -71,20 +74,23 @@
     jdk_version: '1.8'
   tags:
   - ms
+  - ms-3
 
-- include: components/opdk-cassandra-rebuild.yml
-  vars:
-    hosts: 'dc-2-ds'
-    jdk_version: '1.8'
-  tags:
-  - ms
+#- include: components/opdk-cassandra-rebuild.yml
+#  vars:
+#    hosts: 'dc-2-ds'
+#    jdk_version: '1.8'
+#  tags:
+#  - ms
+#  - ms-2
 
-- include: configuration/opdk-set-reachable.yml
-  vars:
-    hosts: 'dc-3-rmp'
-    reachability: 'false'
-  tags:
-  - rmp
+#- include: configuration/opdk-set-reachable.yml
+#  vars:
+#    hosts: 'dc-3-rmp'
+#    reachability: 'false'
+#  tags:
+#  - rmp
+#  - rmp-3
 
 - include: components/opdk-install-component.yml
   vars:
@@ -93,13 +99,15 @@
     jdk_version: '1.8'
   tags:
   - rmp
+  - rmp-3
 
-- include: configuration/opdk-set-reachable.yml
-  vars:
-    hosts: 'dc-3-rmp'
-    reachability: 'true'
-  tags:
-  - rmp
+#- include: configuration/opdk-set-reachable.yml
+#  vars:
+#    hosts: 'dc-3-rmp'
+#    reachability: 'true'
+#  tags:
+#  - rmp
+#  - rmp-3
 
 - include: configuration/opdk-set-reachable.yml
   vars:
@@ -107,6 +115,7 @@
     reachability: 'false'
   tags:
   - rmp
+  - rmp-2
 
 - include: components/opdk-install-component.yml
   vars:
@@ -115,6 +124,7 @@
     jdk_version: '1.8'
   tags:
   - rmp
+  - rmp-2
 
 - include: configuration/opdk-set-reachable.yml
   vars:
@@ -122,6 +132,7 @@
     reachability: 'true'
   tags:
   - rmp
+  - rmp-2
 
 - include: configuration/opdk-set-reachable.yml
   vars:
@@ -129,6 +140,7 @@
     reachability: 'false'
   tags:
   - rmp
+  - rmp-1
 
 - include: components/opdk-install-component.yml
   vars:
@@ -137,6 +149,7 @@
     jdk_version: '1.8'
   tags:
   - rmp
+  - rmp-1
 
 - include: configuration/opdk-set-reachable.yml
   vars:
@@ -144,6 +157,7 @@
     reachability: 'true'
   tags:
   - rmp
+  - rmp-1
 
 - include: components/opdk-install-component.yml
   vars:
@@ -152,6 +166,7 @@
     jdk_version: '1.8'
   tags:
   - qpid
+  - qpid-3
   - qpid-installer
 
 - include: components/opdk-setup-qpid-add.yml
@@ -159,6 +174,7 @@
     hosts: 'dc-3-qpid'
   tags:
   - qpid
+  - qpid-3
   - qpid-add
 
 - include: components/opdk-install-component.yml
@@ -168,12 +184,14 @@
     jdk_version: '1.8'
   tags:
   - qpid
+  - qpid-2
 
 - include: components/opdk-setup-qpid-add.yml
   vars:
     hosts: 'dc-2-qpid'
   tags:
   - qpid
+  - qpid-2
   - qpid-add
 
 - include: validations/opdk-setup-validate.yml
