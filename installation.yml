@@ -73,8 +73,8 @@
     hosts: 'dc-3-ds'
     jdk_version: '1.8'
   tags:
-  - ms
-  - ms-3
+  - ds
+  - ds-3
 
 #- include: components/opdk-cassandra-rebuild.yml
 #  vars:
@@ -84,14 +84,6 @@
 #  - ms
 #  - ms-2
 
-#- include: configuration/opdk-set-reachable.yml
-#  vars:
-#    hosts: 'dc-3-rmp'
-#    reachability: 'false'
-#  tags:
-#  - rmp
-#  - rmp-3
-
 - include: components/opdk-install-component.yml
   vars:
     hosts: 'dc-3-rmp'
@@ -100,14 +92,6 @@
   tags:
   - rmp
   - rmp-3
-
-#- include: configuration/opdk-set-reachable.yml
-#  vars:
-#    hosts: 'dc-3-rmp'
-#    reachability: 'true'
-#  tags:
-#  - rmp
-#  - rmp-3
 
 - include: configuration/opdk-set-reachable.yml
   vars:

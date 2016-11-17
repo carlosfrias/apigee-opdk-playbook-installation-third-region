@@ -80,3 +80,5 @@
 - src: https://github.com/carlosfrias/apigee-opdk-setup-postgresql-add.git
 
 - src: https://github.com/carlosfrias/apigee-opdk-server-self.git
+
+- src: https://github.com/carlosfrias/apigee-opdk-setup-analytics-group-add.git
