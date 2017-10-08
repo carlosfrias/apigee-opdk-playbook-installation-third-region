@@ -51,7 +51,7 @@
 
 - include: components/opdk-install-component.yml
   vars:
-    hosts: 'dc2-ds'
+    hosts: 'dc-2-ds'
     component_profile: 'ds'
     jdk_version: '1.8'
   tags:
@@ -60,7 +60,7 @@
 
 - include: components/opdk-install-component.yml
   vars:
-    hosts: 'dc1-ds'
+    hosts: 'dc-1-ds'
     component_profile: 'ds'
     jdk_version: '1.8'
     opdk_ldap_type: '2'
@@ -78,7 +78,7 @@
 
 #- include: components/opdk-cassandra-rebuild.yml
 #  vars:
-#    hosts: 'dc2-ds'
+#    hosts: 'dc-2-ds'
 #    jdk_version: '1.8'
 #  tags:
 #  - ms
@@ -95,7 +95,7 @@
 
 - include: configuration/opdk-set-reachable.yml
   vars:
-    hosts: 'dc2-rmp'
+    hosts: 'dc-2-rmp'
     reachability: 'false'
   tags:
   - rmp
@@ -103,7 +103,7 @@
 
 - include: components/opdk-install-component.yml
   vars:
-    hosts: 'dc2-rmp'
+    hosts: 'dc-2-rmp'
     component_profile: 'rmp'
     jdk_version: '1.8'
   tags:
@@ -112,7 +112,7 @@
 
 - include: configuration/opdk-set-reachable.yml
   vars:
-    hosts: 'dc2-rmp'
+    hosts: 'dc-2-rmp'
     reachability: 'true'
   tags:
   - rmp
@@ -120,7 +120,7 @@
 
 - include: configuration/opdk-set-reachable.yml
   vars:
-    hosts: 'dc1-rmp'
+    hosts: 'dc-1-rmp'
     reachability: 'false'
   tags:
   - rmp
@@ -128,7 +128,7 @@
 
 - include: components/opdk-install-component.yml
   vars:
-    hosts: 'dc1-rmp'
+    hosts: 'dc-1-rmp'
     component_profile: 'rmp'
     jdk_version: '1.8'
   tags:
@@ -137,7 +137,7 @@
 
 - include: configuration/opdk-set-reachable.yml
   vars:
-    hosts: 'dc1-rmp'
+    hosts: 'dc-1-rmp'
     reachability: 'true'
   tags:
   - rmp
@@ -163,7 +163,7 @@
 
 - include: components/opdk-install-component.yml
   vars:
-    hosts: 'dc2-qpid'
+    hosts: 'dc-2-qpid'
     component_profile: 'qs'
     jdk_version: '1.8'
   tags:
@@ -172,7 +172,7 @@
 
 - include: components/opdk-setup-qpid-add.yml
   vars:
-    hosts: 'dc2-qpid'
+    hosts: 'dc-2-qpid'
   tags:
   - qpid
   - qpid-2
@@ -196,63 +196,63 @@
 
 - include: validations/opdk-setup-log-files.yml
   vars:
-    hosts: dc1-ds
+    hosts: dc-1-ds
   tags:
   - logs
-  - dc1
+  - dc-1
 
 - include: validations/opdk-setup-log-files.yml
   vars:
-    hosts: dc2-ds
+    hosts: dc-2-ds
   tags:
   - logs
-  - dc2
+  - dc-2
 
 - include: validations/opdk-setup-log-files.yml
   vars:
     hosts: dc-3-ds
   tags:
   - logs
-  - dc2
+  - dc-2
 
 - include: validations/opdk-setup-log-files.yml
   vars:
-    hosts: dc1-rmp
+    hosts: dc-1-rmp
   tags:
   - logs
-  - dc1
+  - dc-1
 
 - include: validations/opdk-setup-log-files.yml
   vars:
-    hosts: dc2-rmp
+    hosts: dc-2-rmp
   tags:
   - logs
-  - dc2
+  - dc-2
 
 - include: validations/opdk-setup-log-files.yml
   vars:
     hosts: dc-3-rmp
   tags:
   - logs
-  - dc2
+  - dc-2
 
 - include: validations/opdk-setup-log-files.yml
   vars:
-    hosts: dc1-qpid
+    hosts: dc-1-qpid
   tags:
   - logs
-  - dc1
+  - dc-1
 
 - include: validations/opdk-setup-log-files.yml
   vars:
-    hosts: dc2-qpid
+    hosts: dc-2-qpid
   tags:
   - logs
-  - dc2
+  - dc-2
 
 - include: validations/opdk-setup-log-files.yml
   vars:
     hosts: dc-3-qpid
   tags:
   - logs
-  - dc2
+  - dc-2
