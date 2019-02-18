@@ -1,13 +1,3 @@
-# apigee-opdk-playbook-installation-third-region
-This playbook is created to setup a third region. 
-<!-- BEGIN Google Required Disclaimer -->
+# apigee-opdk-playbook-installation-third-region - DEPRECATED
 
-# Not Google Product Clause
-
-This is not an officially supported Google product.
-<!-- END Google Required Disclaimer -->
-<!-- BEGIN Google How To Contribute -->
-# How to Contribute
-
-We'd love to accept your patches and contributions to this project. Please review our [guidelines](CONTRIBUTING.md).
-<!-- END Google How To Contribute -->
+The functionality provided by this playbook can now be found here: https://github.com/carlosfrias/apigee-opdk-playbook-setup-ansible/tree/master/installations/multi-node
